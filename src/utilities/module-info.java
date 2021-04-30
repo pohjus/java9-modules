@@ -1,5 +1,7 @@
 module utilities {
     exports random;
+
+    requires transitive data;
     requires java.logging;
 
 
