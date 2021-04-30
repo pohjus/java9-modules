@@ -6,4 +6,7 @@ module gui {
 
 
     exports mypackage.gui to javafx.graphics;
+
+    uses random.MyRandom;
+
 }
