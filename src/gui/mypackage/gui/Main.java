@@ -14,7 +14,9 @@ import java.util.*;
 import java.net.http.*;
 import java.net.URI;
 import java.io.IOException;
-
+import datapackage.*;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.core.*;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -27,7 +29,17 @@ public class Main extends Application {
                 .uri(URI.create("https://swapi.dev/api/people/1/"))
                 .build();
         var response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-        response.thenAccept(res -> res.body());
+        response.thenAccept(res -> parse(res.body()));
+    }
+
+    public void parse(String json) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            People p = objectMapper.readValue(json, People.class);
+            System.out.println(p);
+        } catch(JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
 

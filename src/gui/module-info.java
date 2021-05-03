@@ -6,6 +6,9 @@ module gui {
 
     requires java.net.http;
 
+    requires com.fasterxml.jackson.databind;
+
+
     exports mypackage.gui to javafx.graphics;
 
     uses random.MyRandom;
