@@ -13,6 +13,9 @@ public class Person {
     }
     public Person() {
     }
+    public String getName() {
+        return name;
+    }
     public double getBmi() {
         return mass / (height / 100.0 * height / 100.0);
     }
